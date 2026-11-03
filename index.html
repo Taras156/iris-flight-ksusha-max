@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f2f1">
+  <meta name="description" content="Ирисовый полёт — маленькая игра-подарок для Ксюши. Помоги собачке собрать букет ирисов и открыть секретное поздравление.">
+  <title>Ирисовый полёт ✿ — для Ксюши</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" as="image" href="assets/dog.webp">
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="site-wrap">
+    <header class="nav" aria-label="Навигация">
+      <div class="brand"><span class="brand-mark">k<span>✿</span></span><span class="brand-caption">a little thing<br>made with love</span></div>
+      <div class="nav-right"><span class="nav-star" aria-hidden="true">✧</span><span>ДЛЯ САМОЙ ОСОБЕННОЙ</span><span class="nav-heart">♡</span></div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="pageTitle">
+        <div class="eyebrow"><span class="eyebrow-line"></span> МАЛЕНЬКОЕ ПРИКЛЮЧЕНИЕ <span class="eyebrow-line"></span></div>
+        <h1 id="pageTitle">Ирисовый <span>полёт<span class="heading-flower">✿</span></span></h1>
+        <p class="lead">Для Ксюши — от одного пушистого путешественника.<br class="wide-only"> Помоги ему собрать букет, в котором спрятано кое-что важное.</p>
+        <div class="intro-doodles" aria-hidden="true"><span class="sparkle-one">✦</span><span class="sparkle-two">✧</span><span class="sparkle-three">✳</span></div>
+      </section>
+
+      <section class="game-shell" aria-label="Игровое поле">
+        <div class="game-heading">
+          <div class="game-heading-left"><span class="live-dot"></span><span>ЦВЕТОЧНАЯ ЭКСПЕДИЦИЯ</span></div>
+          <div class="game-heading-right">ИГРА № 01 <span class="separator">/</span> СДЕЛАНО С ЛЮБОВЬЮ</div>
+        </div>
+        <div class="game-stage" id="gameStage">
+          <canvas id="game" width="1100" height="600" aria-label="Игра: собачка летит и собирает ирисы. Нажимай пробел, стрелку вверх или касайся поля, чтобы взлетать." tabindex="0"></canvas>
+          <div class="hud" aria-live="off">
+            <div class="hud-item"><span class="hud-icon hud-iris">✿</span><div class="hud-text"><span>ИРИСЫ</span><strong id="flowersCount">0 <small>/ 12</small></strong></div></div>
+            <div class="hud-item"><span class="hud-icon hud-wings">✧</span><div class="hud-text"><span>ПРЫЖКИ</span><strong id="boostCount">5</strong></div></div>
+            <div class="hud-item hud-best"><span class="hud-icon hud-trophy">♡</span><div class="hud-text"><span>РЕКОРД</span><strong id="bestCount">0</strong></div></div>
+          </div>
+          <div class="stage-actions">
+            <button class="round-btn" type="button" id="soundBtn" title="Включить звук" aria-label="Включить звук">♫̸</button>
+            <button class="round-btn" type="button" id="pauseBtn" title="Пауза" aria-label="Пауза" disabled>Ⅱ</button>
+          </div>
+          <div class="progress-track" role="progressbar" aria-label="Собранные ирисы" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" id="progressTrack"><div class="progress-fill" id="progressFill"></div><span class="progress-caption" id="progressCaption">СОБЕРИ 12 ИРИСОВ, ЧТОБЫ ОТКРЫТЬ СЮРПРИЗ ✿</span></div>
+          <div class="toast" id="toast" aria-live="polite"></div>
+          <div class="overlay" id="overlay" role="dialog" aria-modal="false" aria-labelledby="overlayTitle">
+            <div class="overlay-card" id="overlayCard">
+              <span class="card-kicker" id="cardKicker">✦ ТВОЁ ПРИКЛЮЧЕНИЕ НАЧИНАЕТСЯ ✦</span>
+              <img src="assets/dog.webp" alt="Счастливая собачка в прыжке" class="card-dog">
+              <h2 id="overlayTitle">Полетели за ирисами?</h2>
+              <p id="overlayText">Нажимай на экран или <b>пробел</b>, чтобы взлетать. Ирисы добавляют прыжки, а облака подбрасывают вверх!</p>
+              <button type="button" class="start-btn" id="overlayBtn">Начать полёт <span aria-hidden="true">↗</span></button>
+              <div class="overlay-footnote" id="overlayFootnote">За 12 ирисов тебя ждёт маленький секрет ♡</div>
+            </div>
+          </div>
+        </div>
+        <div class="game-footer">
+          <div class="how-to"><span class="mini-key">SPACE</span><span class="mini-key">↑</span><span class="desktop-label">или клик</span><span class="mobile-label">или касание поля</span><span class="arrow-sep">→</span><span>лететь выше</span></div>
+          <button type="button" id="jumpBtn" class="jump-btn" disabled><span>✿</span> ВЗЛЕТЕТЬ!</button>
+        </div>
+      </section>
+
+      <section class="little-guide" aria-label="Правила">
+        <div class="guide-heading"><span>КАК СОБРАТЬ БУКЕТ</span><span class="guide-sparkle">✦</span></div>
+        <div class="guide-grid">
+          <div class="guide-card"><div class="guide-illustration illustration-flower" aria-hidden="true">✿</div><div><h3>Лови ирисы</h3><p>Каждый цветок — ещё один прыжок и шаг к секретному подарку.</p></div></div>
+          <div class="guide-card"><div class="guide-illustration illustration-cloud" aria-hidden="true">☁</div><div><h3>Доверяй облакам</h3><p>Они мягкие, как подушки, и обязательно подбросят повыше.</p></div></div>
+          <div class="guide-card"><div class="guide-illustration illustration-heart" aria-hidden="true">♡</div><div><h3>Не сдавайся</h3><p>Собери 12 ирисов за один полёт — и откроется сюрприз для Ксюши.</p></div></div>
+        </div>
+      </section>
+
+      <section class="closing"><div class="closing-flower" aria-hidden="true">✿</div><p>«Пусть каждый день дарит тебе столько же счастья,<br class="wide-only"> сколько лепестков в самом красивом букете»</p><span>С ЛЮБОВЬЮ, ДЛЯ КСЮШИ ♡</span></section>
+    </main>
+    <footer class="bottom-nav"><span>ИРИСОВЫЙ ПОЛЁТ <span aria-hidden="true">✳</span> 2026</span><span>ONE LITTLE GAME. LOTS OF LOVE.</span></footer>
+  </div>
+</body>
+</html>

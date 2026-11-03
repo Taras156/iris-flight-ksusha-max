@@ -1,0 +1,18 @@
+ИРИСОВЫЙ ПОЛЁТ — ОТДЕЛЬНЫЙ САЙТ ДЛЯ КСЮШИ
+
+1. Распакуйте этот ZIP-архив.
+2. Проверьте игру локально: откройте index.html двойным кликом.
+3. В GitHub Desktop откройте File → New repository.
+4. Назовите его iris-flight-ksusha и создайте.
+5. В GitHub Desktop нажмите Repository → Show in Explorer.
+6. Скопируйте ВСЁ содержимое распакованной папки в папку репозитория.
+   В корне репозитория должен быть index.html, а рядом с ним — папка assets.
+7. Вернитесь в GitHub Desktop → Commit to main → Publish repository.
+   Для бесплатного GitHub Pages снимите отметку Keep this code private.
+8. На сайте GitHub зайдите в Settings → Pages, выберите:
+   Source: Deploy from a branch; Branch: main; Folder: /(root); Save.
+9. Готовый сайт будет доступен по адресу:
+   https://taras156.github.io/iris-flight-ksusha/
+   (если репозиторий создан под аккаунтом Taras156 и назван точно так).
+
+Важно: сайт GitHub Pages будет доступен всем, у кого есть ссылка.
